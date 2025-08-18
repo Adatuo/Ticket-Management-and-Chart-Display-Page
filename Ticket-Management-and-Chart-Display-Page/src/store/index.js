@@ -22,10 +22,14 @@ export const useMainStore = defineStore("main", {
     setPermissionAndLogin(permission) {
       if (permission === "admin") {
         this.permission = "admin";
+        this.isLoggedIn = true;
       } else {
-        this.permission = "user";
+        this.permission = null;
+        this.isLoggedIn = true;
       }
-      this.isLoggedIn = permission === "admin" ? true : false;
+    },
+    checkLogin() {
+      return this.isLoggedIn;
     },
   },
 });

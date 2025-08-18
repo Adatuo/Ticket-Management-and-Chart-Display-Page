@@ -21,7 +21,7 @@ export const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const store = useMainStore();
-  if (!store.isLoggedIn && to.name !== 'Login') {
+  if (!store.checkLogin() && to.name !== 'Login') {
     next({ name: 'Login' });
   } else {
     next();
