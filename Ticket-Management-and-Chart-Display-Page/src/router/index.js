@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { useMainStore } from '../store';
 
 const routes = [
   {
@@ -16,6 +17,15 @@ const routes = [
 export const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const store = useMainStore();
+  if (!store.isLoggedIn && to.name !== 'Login') {
+    next({ name: 'Login' });
+  } else {
+    next();
+  }
 });
 
 export default router;
