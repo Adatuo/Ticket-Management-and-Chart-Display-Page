@@ -1,9 +1,9 @@
-import { defineStore } from 'pinia';
-import { config } from '../pages/config';
+import { defineStore } from "pinia";
+import { config } from "../pages/config";
 
-export const useMainStore = defineStore('main', {
+export const useMainStore = defineStore("main", {
   state: () => ({
-    username: '',
+    username: "",
     password: 123456,
     permission: null,
     isLoggedIn: false,
@@ -12,20 +12,20 @@ export const useMainStore = defineStore('main', {
   getters: {},
   actions: {
     deleteRow(id) {
-      this.tableData = this.tableData.filter(item => item.id !== id);
+      this.tableData = this.tableData.filter((item) => item.id !== id);
       // 重新生成 ID，保证连续性（例如从1开始递增字符串）
       this.tableData = this.tableData.map((item, index) => ({
         ...item,
-        id: String(index + 1).padStart(3, '0'),
+        id: String(index + 1).padStart(3, "0"),
       }));
     },
     setPermissionAndLogin(permission) {
-      if(permission === 'admin') {
-        this.permission = 'admin';
+      if (permission === "admin") {
+        this.permission = "admin";
       } else {
-        this.permission = null;
+        this.permission = "user";
       }
-      this.isLoggedIn = permission === 'admin' ? true : false;
-    }
+      this.isLoggedIn = permission === "admin" ? true : false;
+    },
   },
 });

@@ -35,7 +35,6 @@ function updateChart() {
       data: projects,
       axisLabel: {
         interval: 0,
-        rotate: 20,
       },
     },
     yAxis: {
