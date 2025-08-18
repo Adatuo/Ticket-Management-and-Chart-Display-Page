@@ -44,6 +44,11 @@ const columns = computed(() => {
       dataIndex: 'hours',
       key: 'hours',
     },
+    {
+      title: 'created_at',
+      dataIndex: 'created_at',
+      key: 'created_at',
+    }
   ];
   if (store.permission === 'admin') {
     baseColumns.push({
