@@ -33,7 +33,7 @@ const router = useRouter();
 const store = useMainStore();
 
 const onFinish = values => {
-  if (values.password == '123456') {
+  if (values.password) {
     // 设置权限，模拟登录成功
     store.setPermissionAndLogin(values.username === 'admin' ? 'admin' : null);
     router.push('/');
