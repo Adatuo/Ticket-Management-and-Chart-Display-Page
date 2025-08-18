@@ -1,6 +1,6 @@
 <template>
   <a-table :dataSource="dataSource" :columns="columns" rowKey="id">
-    <template #bodyCell="{ column, record }">
+    <template #bodyCell="{ column, record }" v-if="store.permission === 'admin'">
       <template v-if="column && column.key === 'action'">
         <a-button type="primary" @click="handleDelete(record.id)" danger>Delete</a-button>
       </template>

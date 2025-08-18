@@ -24,8 +24,21 @@ const formState = reactive({
   username: '',
   password: '',
 });
+import { useRouter } from 'vue-router';
+import { useMainStore } from '../../store/index';
+import { storeToRefs } from 'pinia';
+
+const router = useRouter();
+const store = useMainStore();
+
 const onFinish = values => {
-  console.log('Success:', values);
+  if(values.password === '123456') {
+    // 设置权限，模拟登录成功
+    store.setPermissionAndLogin(values.username === 'admin' ? 'admin' : null);
+    router.push('/');
+  } else {
+    alert('密码错误');
+  }
 };
 const onFinishFailed = errorInfo => {
   console.log('Failed:', errorInfo);
