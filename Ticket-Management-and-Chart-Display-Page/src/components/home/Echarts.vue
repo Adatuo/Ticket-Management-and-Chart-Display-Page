@@ -35,6 +35,9 @@ function updateChart() {
       data: projects,
       axisLabel: {
         interval: 0,
+        overflow: 'breakAll', // 允许文本自动换行
+        width: 60, // 设置文本宽度，超出则换行
+        lineHeight: 16, // 设置行高，使换行后的文字有间距
       },
     },
     yAxis: {
@@ -72,7 +75,3 @@ watch(
   { deep: true },
 );
 </script>
-
-<style scoped>
-/* 可根据需要调整图表容器大小 */
-</style>
